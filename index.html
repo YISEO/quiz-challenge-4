@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timed coding quiz</title>
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Coding Quiz Challenge</h1>
+        <p class="quiz-explain">
+            Try to answer the following code-related questions within the time limit.<br />
+            Keep in mind that incorrect answers will penalize your score / time by ten seconds!
+        </p>
+    </header>
+    <div class="start-btn">
+        <button type="button" id="startBtn">Start Quiz</button>
+    </div>
+
+    <section class="quiz-wrap">
+        <div class="timer-box">Time Left: <span class="current-time">60</span></div>
+        <div class="quiz-box">
+            <div class="quiz-title"></div>
+            <ul class="quiz-lists"></ul>
+        </div>
+    </section>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
