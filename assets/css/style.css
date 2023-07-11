@@ -7,6 +7,22 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+ul,
+li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+button {
+    padding: 0;
+    border: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/* init wrap */
 .header {
     display: flex;
     justify-content: center;
@@ -32,4 +48,67 @@ body {
     background-color: #0067a3;
     color: #fff;
     cursor: pointer;
+}
+
+
+/* quiz wrap */
+.quiz-wrap {
+    display: none;
+    margin: auto;
+    max-width: 1000px;
+}
+
+.timer-box {
+    box-sizing: border-box;
+    padding: 10px 0;
+    /* border-bottom: 1px solid #ccc; */
+    text-align: right;
+}
+
+.timer-box .timer-text {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 15px 25px;
+    background-color: #0067a3;
+    color: #fff;
+}
+
+.timer-box .timer-text .current-time {
+    font-weight: bold;
+}
+
+.quiz-box {
+    margin-top: 40px;
+    text-align: left;
+}
+.quiz-box .quiz-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+}
+
+.quiz-box .quiz-lists {
+    margin-top: 30px;
+    font-size: 1.3rem;
+    display: inline-block;
+}
+
+.quiz-box .quiz-lists li {
+    margin-bottom: 20px;
+
+}
+
+.quiz-box .quiz-lists li:last-child {
+    margin-bottom: 0;
+}
+
+.quiz-box .quiz-lists li button {
+    display: block;
+    box-sizing: border-box;
+    padding: 16px 25px;
+    border: 1px solid #b8dff8;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1.3rem;
+    background-color: aliceblue;
 }

@@ -8,19 +8,25 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <header class="header">
-        <h1>Coding Quiz Challenge</h1>
-        <p class="quiz-explain">
-            Try to answer the following code-related questions within the time limit.<br />
-            Keep in mind that incorrect answers will penalize your score / time by ten seconds!
-        </p>
-    </header>
-    <div class="start-btn">
-        <button type="button" id="startBtn">Start Quiz</button>
+    <div class="init-wrap">
+        <header class="header">
+            <h1>Coding Quiz Challenge</h1>
+            <p class="quiz-explain">
+                Try to answer the following code-related questions within the time limit.<br />
+                Keep in mind that incorrect answers will penalize your score / time by ten seconds!
+            </p>
+        </header>
+        <div class="start-btn">
+            <button type="button" id="startBtn">Start Quiz</button>
+        </div>
     </div>
 
     <section class="quiz-wrap">
-        <div class="timer-box">Time Left: <span class="current-time">60</span></div>
+        <div class="timer-box">
+            <div class="timer-text">
+                Time Left: <span class="current-time">60</span>
+            </div>
+        </div>
         <div class="quiz-box">
             <div class="quiz-title"></div>
             <ul class="quiz-lists"></ul>
