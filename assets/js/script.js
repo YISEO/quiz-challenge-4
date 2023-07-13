@@ -1,13 +1,3 @@
-// Global variables
-let quizWrap = document.querySelector(".quiz-wrap");
-let quizTitle = document.querySelector(".quiz-title");
-let startBtn = document.querySelector("#startBtn");
-let initWrap = document.querySelector(".init-wrap");
-let currentTime = document.querySelector(".current-time");
-let timeLeft = 60;
-let score = 0;
-
-
 // Setting quiz question lists
 let questionLists = [
     {
@@ -36,20 +26,39 @@ let questionLists = [
         correctAnswer: "-javascript"
     }
 ]
+
+// Global variables
+let quizWrap = document.querySelector(".quiz-wrap");
+let initWrap = document.querySelector(".init-wrap");
+let endWrap = document.querySelector(".end-wrap");
+let scoreWrap = document.querySelector(".score-wrap");
+let quizTitle = document.querySelector(".quiz-title");
+let startBtn = document.querySelector("#startBtn");
+let currentTime = document.querySelector(".current-time");
+let scoreText = document.querySelector(".score-text");
+let initialSubmitBtn = document.querySelector(".initial-submit")
+let quizLists = document.querySelector(".quiz-lists")
+let goBackBtn = document.querySelector(".back-btn")
+let clearScoreBtn = document.querySelector(".clear-btn")
+
+let timeInterval;
+let timeLeft = 60;
+let score = 0;
 let index = 0;
 let currentQuestion = questionLists[index];
 
 
 // Click the start button, a list of questions displays on the screen
-startBtn.addEventListener("click", function(){
+function startQuizChallenge(){
     initWrap.style.display = "none";
     displayQuestion();
     startTimer();
-})
+}
+
 
 // Start timer
 function startTimer(){
-    let timeInterval = setInterval(function(){
+    timeInterval = setInterval(function(){
         timeLeft--;
         currentTime.textContent = timeLeft;
 
@@ -58,7 +67,7 @@ function startTimer(){
         }
 
         if(timeLeft <= 0){
-            clearInterval(timeInterval);
+            endQuizChallenge();
         }
     }, 1000);
 }
@@ -77,7 +86,6 @@ function displayQuestion(){
         let quizBtn = document.createElement("button");
         
         quizBtn.classList.add("examples");
-        
         
         quizUl.appendChild(quizLi);
         quizLi.appendChild(quizBtn);
@@ -119,7 +127,65 @@ function handleSelectedAnswer(event){
 
 // End the coding quiz challenge
 function endQuizChallenge(){
-    alert("End");
+    clearInterval(timeInterval);
+
+    quizWrap.style.display = "none";
+    endWrap.style.display = "block";
+
+    scoreText.textContent = "Quiz challenge is over! Your final score is " + score;
 }
 
-document.querySelector(".quiz-lists").addEventListener("click", handleSelectedAnswer);
+// Save the score to local storage
+function saveScore(event){
+    event.preventDefault();
+
+    endWrap.style.display = "none";
+    scoreWrap.style.display = "block";
+
+    
+    let initialsValue = document.querySelector(".initial-input").value.trim();
+    if(initialsValue === ""){
+        alert("Please enter your initials.");
+        return;
+    }
+
+    let storedObjects = JSON.parse(localStorage.getItem("initials"));
+    if(!storedObjects){
+        storedObjects = [];
+    }
+    
+    let scoreObj = {
+        "initials": initialsValue,
+        "score": score
+    }
+    
+    // Add an object to array
+    storedObjects.push(scoreObj);
+    window.localStorage.setItem("initials", JSON.stringify(storedObjects));
+
+    // Display score lists
+    for(let i = 0; i < storedObjects.length; i++){
+        let scoreBox = document.querySelector(".score-box");
+        let scoreLists = document.createElement("li");
+        scoreLists.textContent = `${[i+1]}. ${storedObjects[i].initials} - ${storedObjects[i].score}`
+
+        scoreBox.insertAdjacentElement("beforeend", scoreLists);
+    }
+}
+
+// refresh the page
+function pageGetsRefreshed(){
+    location.reload();
+}
+
+// Clear local storage
+function clearLocalstorage(){
+    window.localStorage.clear();
+}
+
+// Event Listeners
+startBtn.addEventListener("click", startQuizChallenge);
+initialSubmitBtn.addEventListener("click", saveScore);
+quizLists.addEventListener("click", handleSelectedAnswer);
+goBackBtn.addEventListener("click", pageGetsRefreshed);
+clearScoreBtn.addEventListener("click", clearLocalstorage);

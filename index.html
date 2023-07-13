@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
+    <!-- explain quiz challenge and add the start button -->
     <div class="init-wrap">
         <header class="header">
             <h1>Coding Quiz Challenge</h1>
@@ -21,6 +22,7 @@
         </div>
     </div>
 
+    <!-- quiz lists and timer section -->
     <section class="quiz-wrap">
         <div class="timer-box">
             <div class="timer-text">
@@ -30,6 +32,28 @@
         <div class="quiz-box">
             <div class="quiz-title"></div>
             <ul class="quiz-lists"></ul>
+        </div>
+    </section>
+
+    <!-- end quiz section -->
+    <section class="end-wrap">
+        <div class="end-title">All done!</div>
+        <p class="score-text"></p>
+        <form action="" id="initialForm" class="initial-form">
+            <label>Enter initials: </label>
+            <input type="text" placeholder="Enter your initials." value="" class="initial-input" />
+            <input type="button" value="submit" class="initial-submit" />
+        </form>
+    </section>
+
+    <!-- save score section -->
+    <section class="score-wrap">
+        <div class="score-title">High Scores</div>
+        <ul class="score-box"></ul>
+
+        <div class="score-btn">
+            <button type="button" class="back-btn">Go back</button>
+            <button type="button" class="clear-btn">Clear high scores</button>
         </div>
     </section>
 
